@@ -1,0 +1,71 @@
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { font-size: 16px; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  color: #1f2933;
+  background: #f5f7fa;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+h1 { font-size: 1.4rem; margin: 0 0 0.75rem; }
+.container { max-width: 56rem; margin: 0 auto; padding: 0.75rem; }
+.container.narrow { max-width: 28rem; }
+.app-header {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 0.5rem; padding: 0.5rem 0.75rem; background: #fff; border-bottom: 1px solid #d5dbe3;
+}
+.app-header h1 { margin: 0; }
+.header-right { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.field { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 0.6rem; min-width: 0; }
+.field label { font-weight: 600; }
+input[type="text"], input[type="password"], input[type="date"], textarea, select {
+  width: 100%; max-width: 100%; padding: 0.4rem 0.5rem; font: inherit;
+  border: 1px solid #9aa5b1; border-radius: 4px; background: #fff;
+}
+textarea { resize: vertical; }
+button {
+  font: inherit; padding: 0.35rem 0.8rem; border: 1px solid #52606d; border-radius: 4px;
+  background: #fff; cursor: pointer; color: inherit;
+}
+button[type="submit"] { background: #2563eb; border-color: #1d4ed8; color: #fff; }
+button[aria-pressed="true"] { background: #1f2933; color: #fff; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+:focus, :focus-visible { outline: 3px solid #f59e0b; outline-offset: 2px; }
+.field-error, .form-error { color: #b91c1c; font-size: 0.9rem; }
+.form-error { margin-bottom: 0.5rem; }
+#add-form, .filter-bar, .summary {
+  background: #fff; border: 1px solid #d5dbe3; border-radius: 6px; padding: 0.75rem; margin-bottom: 0.75rem;
+}
+.filter-bar { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0.5rem 0.75rem; }
+.filter-bar .field { margin-bottom: 0; flex: 1 1 10rem; }
+.btn-group { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+.summary { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.summary p { margin: 0; }
+#clear-confirm { flex: 1 1 100%; display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+#clear-confirm p { margin: 0; }
+.todo-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
+.todo-item { background: #fff; border: 1px solid #d5dbe3; border-radius: 6px; padding: 0.6rem 0.75rem; }
+.todo-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; }
+.todo-title { font-weight: 600; }
+.todo-item[data-status="done"] .todo-title { text-decoration: line-through; color: #616e7c; }
+.todo-priority { padding: 0 0.4rem; border-radius: 4px; background: #e4e7eb; font-size: 0.85rem; }
+.todo-priority[data-priority="high"] { background: #fecaca; }
+.todo-priority[data-priority="low"] { background: #d9e2ec; }
+.todo-due { font-size: 0.9rem; color: #3e4c59; }
+.todo-overdue { color: #fff; background: #b91c1c; padding: 0 0.4rem; border-radius: 4px; font-size: 0.85rem; }
+.todo-memo { margin: 0.3rem 0 0; white-space: pre-wrap; color: #3e4c59; }
+.todo-actions { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-left: auto; }
+.delete-confirm { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; margin-top: 0.4rem; }
+.delete-confirm p { margin: 0; }
+.edit-form .field { margin-bottom: 0.5rem; }
+.edit-actions { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.users-table { width: 100%; border-collapse: collapse; background: #fff; }
+.users-table th, .users-table td { border: 1px solid #d5dbe3; padding: 0.3rem 0.4rem; text-align: left; }
+.empty-message { color: #52606d; }
+/* 日付入力は内部のカレンダーボタンにも Tab が止まり、本体の :focus が外れることがあるため、枠のスタイルを常に持たせる */
+input[type="date"] { outline: 2px solid transparent; outline-offset: 2px; }
+input[type="date"]:focus-within { outline-color: #f59e0b; }
+/* 認証の確認が終わるまで、中身を見せない（SPEC 3.0 節） */
+body[data-auth="pending"] > * { visibility: hidden; }

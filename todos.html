@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ToDo 一覧 | ToDo 管理</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-auth="pending">
+<header class="app-header">
+<h1 data-testid="page-title">ToDo 管理</h1>
+<div class="header-right">
+<span data-testid="header-user-name" id="header-user-name"></span>
+<span id="header-links"></span>
+<button type="button" data-testid="logout-button" id="logout-button">ログアウト</button>
+</div>
+</header>
+<main class="container">
+<form id="add-form" data-testid="add-form" novalidate>
+<div class="form-error" data-testid="add-form-error" role="alert" hidden></div>
+<div class="field">
+<label for="title-input">タイトル</label>
+<input type="text" id="title-input" data-testid="title-input">
+<div class="field-error" data-testid="title-error" role="alert" hidden></div>
+</div>
+<div class="field">
+<label for="memo-input">メモ</label>
+<textarea id="memo-input" data-testid="memo-input" rows="3"></textarea>
+<div class="field-error" data-testid="memo-error" role="alert" hidden></div>
+</div>
+<div class="field">
+<label for="due-input">期限</label>
+<input type="date" id="due-input" data-testid="due-input">
+<div class="field-error" data-testid="due-error" role="alert" hidden></div>
+</div>
+<div class="field">
+<label for="priority-select">優先度</label>
+<select id="priority-select" data-testid="priority-select">
+<option value="high">高</option>
+<option value="medium" selected>中</option>
+<option value="low">低</option>
+</select>
+<div class="field-error" data-testid="priority-error" role="alert" hidden></div>
+</div>
+<button type="submit" data-testid="add-submit">追加</button>
+</form>
+<section class="filter-bar" id="filter-bar" data-testid="filter-bar">
+<div data-testid="filter-status" role="group" aria-label="状態" class="btn-group">
+<button type="button" data-testid="filter-status-all" data-value="all" aria-pressed="true">すべて</button>
+<button type="button" data-testid="filter-status-active" data-value="active" aria-pressed="false">未完了</button>
+<button type="button" data-testid="filter-status-done" data-value="done" aria-pressed="false">完了</button>
+</div>
+<div class="field">
+<label for="filter-priority">優先度の絞り込み</label>
+<select id="filter-priority" data-testid="filter-priority">
+<option value="all" selected>すべて</option>
+<option value="high">高</option>
+<option value="medium">中</option>
+<option value="low">低</option>
+</select>
+</div>
+<div class="field">
+<label for="filter-q">キーワード</label>
+<input type="text" id="filter-q" data-testid="filter-q">
+<div class="field-error" data-testid="filter-q-error" role="alert" hidden></div>
+</div>
+<div class="field">
+<label for="filter-sort">並び順</label>
+<select id="filter-sort" data-testid="filter-sort">
+<option value="created_desc" selected>新しい順</option>
+<option value="created_asc">古い順</option>
+<option value="due_asc">期限が近い順</option>
+<option value="priority_desc">優先度が高い順</option>
+</select>
+</div>
+<button type="button" data-testid="filter-clear" id="filter-clear">条件をクリア</button>
+</section>
+<section class="summary" id="summary">
+<p data-testid="todo-counts" id="todo-counts"></p>
+<button type="button" data-testid="clear-completed-button" id="clear-completed-button" disabled>完了済みをすべて削除</button>
+</section>
+<div class="form-error" data-testid="list-error" role="alert" hidden></div>
+<ul class="todo-list" data-testid="todo-list" id="todo-list"></ul>
+</main>
+<script src="assets/api.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/todos.js"></script>
+</body>
+</html>

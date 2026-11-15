@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>利用者一覧 | ToDo 管理</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/app.css">
+</head>
+<body data-auth="pending">
+<main class="container" id="main">
+<h1 data-testid="page-title">利用者一覧</h1>
+<div class="form-error" data-testid="users-error" role="alert" hidden></div>
+<table class="users-table" data-testid="users-table">
+<thead><tr><th>ユーザー名</th><th>表示名</th><th>ロール</th><th>全件</th><th>未完了</th><th>完了</th></tr></thead>
+<tbody id="users-body"></tbody>
+</table>
+<p><a href="todos.html" data-testid="back-to-todos">ToDo 一覧へ</a></p>
+</main>
+<script src="assets/api.js"></script>
+<script src="assets/common.js"></script>
+<script src="assets/admin-users.js"></script>
+</body>
+</html>
